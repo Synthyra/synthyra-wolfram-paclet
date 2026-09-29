@@ -1,0 +1,27 @@
+Notebook[{
+    Cell["SynthyraLink", "Title", CellTags -> "Name"],
+    Cell["Native Wolfram Language access to Synthyra protein annotation, interaction-network, and design services.", "Text", CellTags -> "Description"],
+    Cell[
+        BoxData[TemplateBox[{}, "PacletDirectoryChooserTemplate"]],
+        "PacletDirectoryChooser",
+        TaggingRules -> <|
+            "PacletDirectoryType" -> "Notebook",
+            "Refreshing" -> False
+        |>,
+        CellTags -> "PacletManifestPanel"
+    ],
+    Cell["Synthyra", "Text", CellTags -> "PublisherID"],
+    Cell["Paclet", "Text", CellTags -> "ResourceType"],
+    Cell["Apache-2.0", "Text", CellTags -> "License"],
+    Cell["This paclet communicates with the external Synthyra API, requires a user-supplied credential for protected routes, and may invoke metered operations. It writes local files only when Target -> File[...] is explicitly requested.", "Text", CellTags -> "Disclosures"],
+    Cell["Build and submission are performed by PacletCICD after fixture tests, documentation generation, CheckPaclet, and a clean-install smoke test.", "Text", CellTags -> "Notes"]
+},
+    WindowTitle -> "SynthyraLink Resource Definition",
+    TaggingRules -> <|
+        "ResourceType" -> "Paclet",
+        "Name" -> "SynthyraLink",
+        "PublisherID" -> "Synthyra",
+        "Version" -> "0.2.0"
+    |>,
+    StyleDefinitions -> "Default.nb"
+]

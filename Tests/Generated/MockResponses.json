@@ -1,0 +1,679 @@
+{
+  "contractDigest": "e2d1a6de243224bbab3447ee4fa662b7668d5627046f0cd8032aae0311f263fd",
+  "fixtures": {
+    "cancelProtifyJob": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-cancelProtifyJob"
+      },
+      "status": 200
+    },
+    "createInterActomeTmap": {
+      "body": {
+        "job_id": "example",
+        "result": {
+          "edges": [
+            {
+              "distance": 0.0,
+              "score": 0,
+              "source": "example",
+              "target": "example"
+            }
+          ],
+          "focus": {
+            "global_bbox": {
+              "x_max": 0.0,
+              "x_min": 0.0,
+              "y_max": 0.0,
+              "y_min": 0.0
+            },
+            "local_bbox": {
+              "x_max": 0.0,
+              "x_min": 0.0,
+              "y_max": 0.0,
+              "y_min": 0.0
+            },
+            "local_node_ids": [
+              "example"
+            ],
+            "neighbor_depth": 0,
+            "node_tiers": {},
+            "query_center": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "query_ids": [
+              "example"
+            ],
+            "query_indices": [
+              0
+            ],
+            "top_k": 1
+          },
+          "html": "example",
+          "html_format": "srcdoc",
+          "metadata": {
+            "edge_count": 0,
+            "html_bytes": 0,
+            "layout_import": "example",
+            "layout_package": "example",
+            "layout_source": "example",
+            "layout_version": "example",
+            "max_nodes": 0,
+            "n_neighbors": 0,
+            "node_count": 0,
+            "score_dtype": "uint8",
+            "score_max": 0,
+            "score_min": 0,
+            "seed": 0
+          },
+          "nodes": [
+            {
+              "id": "example",
+              "node_type": "protein"
+            }
+          ],
+          "title": "example"
+        }
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-createInterActomeTmap"
+      },
+      "status": 200
+    },
+    "createIntraActomeTmap": {
+      "body": {
+        "job_id": "example",
+        "result": {
+          "edges": [
+            {
+              "distance": 0.0,
+              "score": 0,
+              "source": "example",
+              "target": "example"
+            }
+          ],
+          "focus": {
+            "global_bbox": {
+              "x_max": 0.0,
+              "x_min": 0.0,
+              "y_max": 0.0,
+              "y_min": 0.0
+            },
+            "local_bbox": {
+              "x_max": 0.0,
+              "x_min": 0.0,
+              "y_max": 0.0,
+              "y_min": 0.0
+            },
+            "local_node_ids": [
+              "example"
+            ],
+            "neighbor_depth": 0,
+            "node_tiers": {},
+            "query_center": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "query_ids": [
+              "example"
+            ],
+            "query_indices": [
+              0
+            ],
+            "top_k": 1
+          },
+          "html": "example",
+          "html_format": "srcdoc",
+          "metadata": {
+            "edge_count": 0,
+            "html_bytes": 0,
+            "layout_import": "example",
+            "layout_package": "example",
+            "layout_source": "example",
+            "layout_version": "example",
+            "max_nodes": 0,
+            "n_neighbors": 0,
+            "node_count": 0,
+            "score_dtype": "uint8",
+            "score_max": 0,
+            "score_min": 0,
+            "seed": 0
+          },
+          "nodes": [
+            {
+              "id": "example",
+              "node_type": "protein"
+            }
+          ],
+          "title": "example"
+        }
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-createIntraActomeTmap"
+      },
+      "status": 200
+    },
+    "deleteJob": {
+      "body": null,
+      "headers": {
+        "content-type": "",
+        "x-request-id": "fixture-deleteJob"
+      },
+      "status": 204
+    },
+    "downloadDeepResearch": {
+      "bodyBase64": "AAE=",
+      "headers": {
+        "content-type": "application/pdf",
+        "x-request-id": "fixture-downloadDeepResearch"
+      },
+      "status": 200
+    },
+    "downloadProtifyArtifacts": {
+      "bodyBase64": "AAE=",
+      "headers": {
+        "content-type": "application/zip",
+        "x-request-id": "fixture-downloadProtifyArtifacts"
+      },
+      "status": 200
+    },
+    "getBatchChunk": {
+      "body": "{}\n",
+      "headers": {
+        "content-type": "application/x-ndjson",
+        "x-request-id": "fixture-getBatchChunk"
+      },
+      "status": 200
+    },
+    "getBatchManifest": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-getBatchManifest"
+      },
+      "status": 200
+    },
+    "getBatchResultsJsonl": {
+      "body": "{}\n",
+      "headers": {
+        "content-type": "application/x-ndjson",
+        "x-request-id": "fixture-getBatchResultsJsonl"
+      },
+      "status": 200
+    },
+    "getBatchStatus": {
+      "body": {
+        "job_id": "example",
+        "status": "example"
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-getBatchStatus"
+      },
+      "status": 200
+    },
+    "getDeepResearchJob": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-getDeepResearchJob"
+      },
+      "status": 200
+    },
+    "getHealth": {
+      "body": {
+        "status": "ok"
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-getHealth"
+      },
+      "status": 200
+    },
+    "getHealthReady": {
+      "body": {
+        "checks": {
+          "modal": {
+            "latency_ms": 164,
+            "ok": true
+          }
+        },
+        "status": "ready"
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-getHealthReady"
+      },
+      "status": 200
+    },
+    "getJob": {
+      "body": {
+        "job_id": "example",
+        "status": "example"
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-getJob"
+      },
+      "status": 200
+    },
+    "getJobPartial": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-getJobPartial"
+      },
+      "status": 200
+    },
+    "getJobResult": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-getJobResult"
+      },
+      "status": 200
+    },
+    "getProtifyJob": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-getProtifyJob"
+      },
+      "status": 200
+    },
+    "getProtifyLogs": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-getProtifyLogs"
+      },
+      "status": 200
+    },
+    "getProtifyResults": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-getProtifyResults"
+      },
+      "status": 200
+    },
+    "getSharedAnalysis": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-getSharedAnalysis"
+      },
+      "status": 200
+    },
+    "getSharedField": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-getSharedField"
+      },
+      "status": 200
+    },
+    "listJobs": {
+      "body": {
+        "jobs": [
+          {}
+        ]
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-listJobs"
+      },
+      "status": 200
+    },
+    "listProtifyBenchmarks": {
+      "body": {
+        "benchmarks": [
+          {
+            "description": "example",
+            "name": "example",
+            "num_tasks": 0,
+            "task_type": "example"
+          }
+        ]
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-listProtifyBenchmarks"
+      },
+      "status": 200
+    },
+    "listProtifyDatasets": {
+      "body": {
+        "datasets": [
+          {
+            "hf_path": "example",
+            "name": "example"
+          }
+        ]
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-listProtifyDatasets"
+      },
+      "status": 200
+    },
+    "listProtifyJobs": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-listProtifyJobs"
+      },
+      "status": 200
+    },
+    "listProtifyModels": {
+      "body": {
+        "models": [
+          {
+            "family": "example",
+            "hf_path": "example",
+            "name": "example",
+            "parameters": "example",
+            "supported_probe_types": [
+              "example"
+            ]
+          }
+        ]
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-listProtifyModels"
+      },
+      "status": 200
+    },
+    "listProtifyProbes": {
+      "body": {
+        "probes": [
+          {
+            "description": "example",
+            "name": "example",
+            "supports_lora": false
+          }
+        ]
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-listProtifyProbes"
+      },
+      "status": 200
+    },
+    "runAllOracles": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-runAllOracles"
+      },
+      "status": 200
+    },
+    "runAtlasCamp": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-runAtlasCamp"
+      },
+      "status": 200
+    },
+    "runCamp": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-runCamp"
+      },
+      "status": 200
+    },
+    "runCampMsa": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-runCampMsa"
+      },
+      "status": 200
+    },
+    "runOracle": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-runOracle"
+      },
+      "status": 200
+    },
+    "runOracles": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-runOracles"
+      },
+      "status": 200
+    },
+    "runTranslator": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-runTranslator"
+      },
+      "status": 200
+    },
+    "scoreAtlasPli": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-scoreAtlasPli"
+      },
+      "status": 200
+    },
+    "scoreAtlasPpi": {
+      "body": {},
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-scoreAtlasPpi"
+      },
+      "status": 200
+    },
+    "submitAtlasCampBatch": {
+      "body": {
+        "chunk_size": 1,
+        "job_id": "example",
+        "status": "example",
+        "task": "example",
+        "total_chunks": 0,
+        "total_items": 0
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitAtlasCampBatch"
+      },
+      "status": 200
+    },
+    "submitAtlasPliBatch": {
+      "body": {
+        "chunk_size": 1,
+        "job_id": "example",
+        "status": "example",
+        "task": "example",
+        "total_chunks": 0,
+        "total_items": 0
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitAtlasPliBatch"
+      },
+      "status": 200
+    },
+    "submitAtlasPpiBatch": {
+      "body": {
+        "chunk_size": 1,
+        "job_id": "example",
+        "status": "example",
+        "task": "example",
+        "total_chunks": 0,
+        "total_items": 0
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitAtlasPpiBatch"
+      },
+      "status": 200
+    },
+    "submitCampBatch": {
+      "body": {
+        "chunk_size": 1,
+        "job_id": "example",
+        "status": "example",
+        "task": "example",
+        "total_chunks": 0,
+        "total_items": 0
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitCampBatch"
+      },
+      "status": 200
+    },
+    "submitCoordinatedPrediction": {
+      "body": {
+        "job_id": "example"
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitCoordinatedPrediction"
+      },
+      "status": 200
+    },
+    "submitDeepResearch": {
+      "body": {
+        "job_id": "example",
+        "status": "example"
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitDeepResearch"
+      },
+      "status": 200
+    },
+    "submitDfaPrediction": {
+      "body": {
+        "job_id": "example"
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitDfaPrediction"
+      },
+      "status": 200
+    },
+    "submitFoldBatch": {
+      "body": {
+        "chunk_size": 1,
+        "job_id": "example",
+        "status": "example",
+        "task": "example",
+        "total_chunks": 0,
+        "total_items": 0
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitFoldBatch"
+      },
+      "status": 200
+    },
+    "submitFoldseek3diBatch": {
+      "body": {
+        "chunk_size": 1,
+        "job_id": "example",
+        "status": "example",
+        "task": "example",
+        "total_chunks": 0,
+        "total_items": 0
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitFoldseek3diBatch"
+      },
+      "status": 200
+    },
+    "submitInlineSummary": {
+      "body": {
+        "job_id": "example",
+        "status": "example"
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitInlineSummary"
+      },
+      "status": 200
+    },
+    "submitOracleBatch": {
+      "body": {
+        "chunk_size": 1,
+        "job_id": "example",
+        "status": "example",
+        "task": "example",
+        "total_chunks": 0,
+        "total_items": 0
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitOracleBatch"
+      },
+      "status": 200
+    },
+    "submitOraclesBatch": {
+      "body": {
+        "chunk_size": 1,
+        "job_id": "example",
+        "status": "example",
+        "task": "example",
+        "total_chunks": 0,
+        "total_items": 0
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitOraclesBatch"
+      },
+      "status": 200
+    },
+    "submitPrediction": {
+      "body": {
+        "job_id": "example"
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitPrediction"
+      },
+      "status": 200
+    },
+    "submitProtifyTraining": {
+      "body": {
+        "job_id": "example",
+        "status": "example"
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitProtifyTraining"
+      },
+      "status": 200
+    },
+    "submitTranslatorBatch": {
+      "body": {
+        "chunk_size": 1,
+        "job_id": "example",
+        "status": "example",
+        "task": "example",
+        "total_chunks": 0,
+        "total_items": 0
+      },
+      "headers": {
+        "content-type": "application/json",
+        "x-request-id": "fixture-submitTranslatorBatch"
+      },
+      "status": 200
+    }
+  }
+}

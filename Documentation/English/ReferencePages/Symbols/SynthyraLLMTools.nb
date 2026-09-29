@@ -1,0 +1,888 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     41306,        878]
+NotebookOptionsPosition[     38823,        821]
+NotebookOutlinePosition[     39429,        842]
+CellTagsIndexPosition[     39386,        839]
+WindowTitle->SynthyraLLMTools
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["SynthyraLLMTools", "ObjectName",
+ CellID->1789269148,ExpressionUUID->"aafde532-f773-a94f-8882-d08d37267fd5"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"SynthyraLLMTools", "[", "]"}]], "InlineFormula",ExpressionUUID->
+  "07f8dc37-3887-ed48-b9c8-75ca48b9440c"],
+ " gives LLMTool objects for protein interaction, ligand binding, properties, \
+interaction partners, and folding, for use with LLMSynthesize and ChatObject."
+}], "Usage",ExpressionUUID->"079c1bf9-705c-f14d-9ba1-c0ffd34b080a"],
+
+Cell["Details", "NotesSection",
+ CellID->526220353,ExpressionUUID->"b7dbedb6-a5d4-f141-88f8-832ad94b4e5b"],
+
+Cell["\<\
+Each tool takes proteins as UniProt accessions, gene symbols, or sequences \
+and returns text a language model reads.\
+\>", "Notes",
+ CellID->176100681,ExpressionUUID->"55cccab3-c012-6146-bc82-24d1bfade5b6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",ExpressionUUID->"85d7a6a4-fbbf-104e-8775-da6908927958"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<Synthyra`SynthyraLink`\>\"", "]"}]], "Input",
+ CellID->1543145072,ExpressionUUID->"149b9220-df42-a040-805c-05d60403cf1a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Column", "@", 
+  RowBox[{"SynthyraLLMTools", "[", "]"}]}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->1454590456,ExpressionUUID->"8b9245b1-bced-7c44-855e-c85390078d9b"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     InterpretationBox[
+      RowBox[{
+       TagBox["LLMTool",
+        "SummaryHead"], "[", 
+       DynamicModuleBox[{Typeset`open$$ = False, Typeset`embedState$$ = 
+        "Ready"}, 
+        TemplateBox[{
+          PaneSelectorBox[{False -> GridBox[{{
+                PaneBox[
+                 ButtonBox[
+                  DynamicBox[
+                   FEPrivate`FrontEndResource[
+                   "FEBitmaps", "SummaryBoxOpener"]], 
+                  ButtonFunction :> (Typeset`open$$ = True), Appearance -> 
+                  None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                  "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                 Dynamic[{
+                   Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                GridBox[{{
+                   RowBox[{
+                    TagBox["\"Name: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"synthyra_protein_interaction\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Description: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"Probability from 0 to 1 that two proteins physically \
+interact, from Synthyra's\\nAtlas-PPI model. Each protein is a UniProt \
+accession, a gene symbol, or an\"", "SummaryItem"]}]}}, 
+                 GridBoxAlignment -> {
+                  "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+                 False, GridBoxItemSize -> {
+                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                 GridBoxSpacings -> {
+                  "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                 BaseStyle -> {
+                  ShowStringCharacters -> False, NumberMarks -> False, 
+                   PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+              GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+              AutoDelete -> False, 
+              GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+              BaselinePosition -> {1, 1}], True -> GridBox[{{
+                PaneBox[
+                 ButtonBox[
+                  DynamicBox[
+                   FEPrivate`FrontEndResource[
+                   "FEBitmaps", "SummaryBoxCloser"]], 
+                  ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                  None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                  "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                 Dynamic[{
+                   Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                GridBox[{{
+                   RowBox[{
+                    TagBox["\"Name: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"synthyra_protein_interaction\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Description: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"Probability from 0 to 1 that two proteins physically \
+interact, from Synthyra's\\nAtlas-PPI model. Each protein is a UniProt \
+accession, a gene symbol, or an\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Function: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{
+                    RowBox[{"Synthyra`SynthyraLink`Private`llmScore", "[", 
+                    RowBox[{"SynthyraProteinInteractionScore", "[", 
+                    RowBox[{
+                    RowBox[{"#1", "[", "\"protein_a\"", "]"}], ",", 
+                    RowBox[{"#1", "[", "\"protein_b\"", "]"}]}], "]"}], "]"}],
+                     "&"}], "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Parameters: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    TagBox[
+                    GridBox[{{"\"protein_a\"", 
+                    TagBox[
+                    TooltipBox[
+                    TemplateBox[{"\"String\"", 
+                    RowBox[{"Interpreter", "[", "\"String\"", "]"}]}, 
+                    "ClickToCopy2"], "\"parameter interpreter\"", 
+                    TooltipStyle -> "TextStyling"], 
+                    Annotation[#, "parameter interpreter", "Tooltip"]& ], 
+                    "\"\""}, {"\"protein_b\"", 
+                    TagBox[
+                    TooltipBox[
+                    TemplateBox[{"\"String\"", 
+                    RowBox[{"Interpreter", "[", "\"String\"", "]"}]}, 
+                    "ClickToCopy2"], "\"parameter interpreter\"", 
+                    TooltipStyle -> "TextStyling"], 
+                    Annotation[#, "parameter interpreter", "Tooltip"]& ], 
+                    "\"\""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {{1, 1}, Axis}, 
+                    BaseStyle -> {
+                    ButtonBoxOptions -> {ImageSize -> Automatic}}], "Grid"], 
+                    "SummaryItem"]}]}}, 
+                 GridBoxAlignment -> {
+                  "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+                 False, GridBoxItemSize -> {
+                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                 GridBoxSpacings -> {
+                  "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                 BaseStyle -> {
+                  ShowStringCharacters -> False, NumberMarks -> False, 
+                   PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+              GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+              AutoDelete -> False, 
+              GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+              BaselinePosition -> {1, 1}]}, 
+           Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+         "SummaryPanel"],
+        DynamicModuleValues:>{}], "]"}],
+      LLMTool[<|
+       "Name" -> "synthyra_protein_interaction", "Description" -> 
+        "Probability from 0 to 1 that two proteins physically interact, from \
+Synthyra's Atlas-PPI model. Each protein is a UniProt accession, a gene \
+symbol, or an amino-acid sequence.", 
+        "Parameters" -> {
+         "protein_a" -> <|
+           "Interpreter" -> "String", "Help" -> Missing["NotSpecified"], 
+            "Required" -> True|>, 
+          "protein_b" -> <|
+           "Interpreter" -> "String", "Help" -> Missing["NotSpecified"], 
+            "Required" -> True|>}, 
+        "Function" -> (Synthyra`SynthyraLink`Private`llmScore[
+          Synthyra`SynthyraLink`SynthyraProteinInteractionScore[
+           #["protein_a"], 
+           #["protein_b"]]]& ), "Options" -> {}, "LLMPacletVersion" -> 
+        "2.3.2"|>],
+      Editable->False,
+      SelectWithContents->True,
+      Selectable->False]},
+    {
+     InterpretationBox[
+      RowBox[{
+       TagBox["LLMTool",
+        "SummaryHead"], "[", 
+       DynamicModuleBox[{Typeset`open$$ = False, Typeset`embedState$$ = 
+        "Ready"}, 
+        TemplateBox[{
+          PaneSelectorBox[{False -> GridBox[{{
+                PaneBox[
+                 ButtonBox[
+                  DynamicBox[
+                   FEPrivate`FrontEndResource[
+                   "FEBitmaps", "SummaryBoxOpener"]], 
+                  ButtonFunction :> (Typeset`open$$ = True), Appearance -> 
+                  None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                  "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                 Dynamic[{
+                   Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                GridBox[{{
+                   RowBox[{
+                    TagBox["\"Name: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["\"synthyra_ligand_binding\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Description: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"Probability from 0 to 1 that a small molecule binds a \
+protein, from Synthyra's\\nAtlas-PLI model. The ligand is SMILES or a \
+chemical name; the protein is a\"", "SummaryItem"]}]}}, 
+                 GridBoxAlignment -> {
+                  "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+                 False, GridBoxItemSize -> {
+                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                 GridBoxSpacings -> {
+                  "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                 BaseStyle -> {
+                  ShowStringCharacters -> False, NumberMarks -> False, 
+                   PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+              GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+              AutoDelete -> False, 
+              GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+              BaselinePosition -> {1, 1}], True -> GridBox[{{
+                PaneBox[
+                 ButtonBox[
+                  DynamicBox[
+                   FEPrivate`FrontEndResource[
+                   "FEBitmaps", "SummaryBoxCloser"]], 
+                  ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                  None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                  "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                 Dynamic[{
+                   Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                GridBox[{{
+                   RowBox[{
+                    TagBox["\"Name: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["\"synthyra_ligand_binding\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Description: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"Probability from 0 to 1 that a small molecule binds a \
+protein, from Synthyra's\\nAtlas-PLI model. The ligand is SMILES or a \
+chemical name; the protein is a\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Function: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{
+                    RowBox[{"Synthyra`SynthyraLink`Private`llmScore", "[", 
+                    RowBox[{"SynthyraLigandBindingScore", "[", 
+                    RowBox[{
+                    RowBox[{"#1", "[", "\"protein\"", "]"}], ",", 
+                    RowBox[{"#1", "[", "\"ligand\"", "]"}]}], "]"}], "]"}], 
+                    "&"}], "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Parameters: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    TagBox[
+                    GridBox[{{"\"protein\"", 
+                    TagBox[
+                    TooltipBox[
+                    TemplateBox[{"\"String\"", 
+                    RowBox[{"Interpreter", "[", "\"String\"", "]"}]}, 
+                    "ClickToCopy2"], "\"parameter interpreter\"", 
+                    TooltipStyle -> "TextStyling"], 
+                    Annotation[#, "parameter interpreter", "Tooltip"]& ], 
+                    "\"\""}, {"\"ligand\"", 
+                    TagBox[
+                    TooltipBox[
+                    TemplateBox[{"\"String\"", 
+                    RowBox[{"Interpreter", "[", "\"String\"", "]"}]}, 
+                    "ClickToCopy2"], "\"parameter interpreter\"", 
+                    TooltipStyle -> "TextStyling"], 
+                    Annotation[#, "parameter interpreter", "Tooltip"]& ], 
+                    "\"\""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {{1, 1}, Axis}, 
+                    BaseStyle -> {
+                    ButtonBoxOptions -> {ImageSize -> Automatic}}], "Grid"], 
+                    "SummaryItem"]}]}}, 
+                 GridBoxAlignment -> {
+                  "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+                 False, GridBoxItemSize -> {
+                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                 GridBoxSpacings -> {
+                  "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                 BaseStyle -> {
+                  ShowStringCharacters -> False, NumberMarks -> False, 
+                   PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+              GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+              AutoDelete -> False, 
+              GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+              BaselinePosition -> {1, 1}]}, 
+           Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+         "SummaryPanel"],
+        DynamicModuleValues:>{}], "]"}],
+      LLMTool[<|
+       "Name" -> "synthyra_ligand_binding", "Description" -> 
+        "Probability from 0 to 1 that a small molecule binds a protein, from \
+Synthyra's Atlas-PLI model. The ligand is SMILES or a chemical name; the \
+protein is a UniProt accession, gene symbol, or sequence.", 
+        "Parameters" -> {
+         "protein" -> <|
+           "Interpreter" -> "String", "Help" -> Missing["NotSpecified"], 
+            "Required" -> True|>, 
+          "ligand" -> <|
+           "Interpreter" -> "String", "Help" -> Missing["NotSpecified"], 
+            "Required" -> True|>}, 
+        "Function" -> (Synthyra`SynthyraLink`Private`llmScore[
+          Synthyra`SynthyraLink`SynthyraLigandBindingScore[
+           #["protein"], 
+           #["ligand"]]]& ), "Options" -> {}, "LLMPacletVersion" -> "2.3.2"|>],
+      Editable->False,
+      SelectWithContents->True,
+      Selectable->False]},
+    {
+     InterpretationBox[
+      RowBox[{
+       TagBox["LLMTool",
+        "SummaryHead"], "[", 
+       DynamicModuleBox[{Typeset`open$$ = False, Typeset`embedState$$ = 
+        "Ready"}, 
+        TemplateBox[{
+          PaneSelectorBox[{False -> GridBox[{{
+                PaneBox[
+                 ButtonBox[
+                  DynamicBox[
+                   FEPrivate`FrontEndResource[
+                   "FEBitmaps", "SummaryBoxOpener"]], 
+                  ButtonFunction :> (Typeset`open$$ = True), Appearance -> 
+                  None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                  "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                 Dynamic[{
+                   Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                GridBox[{{
+                   RowBox[{
+                    TagBox["\"Name: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"synthyra_protein_properties\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Description: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"Predicted properties of a protein from Synthyra's \
+Oracle probes: solubility,\\nthermostability, E. coli expression, subcellular \
+location, pH optimum, kcat,\"", "SummaryItem"]}]}}, 
+                 GridBoxAlignment -> {
+                  "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+                 False, GridBoxItemSize -> {
+                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                 GridBoxSpacings -> {
+                  "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                 BaseStyle -> {
+                  ShowStringCharacters -> False, NumberMarks -> False, 
+                   PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+              GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+              AutoDelete -> False, 
+              GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+              BaselinePosition -> {1, 1}], True -> GridBox[{{
+                PaneBox[
+                 ButtonBox[
+                  DynamicBox[
+                   FEPrivate`FrontEndResource[
+                   "FEBitmaps", "SummaryBoxCloser"]], 
+                  ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                  None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                  "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                 Dynamic[{
+                   Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                GridBox[{{
+                   RowBox[{
+                    TagBox["\"Name: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"synthyra_protein_properties\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Description: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"Predicted properties of a protein from Synthyra's \
+Oracle probes: solubility,\\nthermostability, E. coli expression, subcellular \
+location, pH optimum, kcat,\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Function: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{
+                    
+                    RowBox[{
+                    "Synthyra`SynthyraLink`Private`llmProperties", "[", 
+                    RowBox[{"SynthyraProteinProperties", "[", 
+                    RowBox[{"#1", "[", "\"protein\"", "]"}], "]"}], "]"}], 
+                    "&"}], "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Parameters: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    TagBox[
+                    GridBox[{{"\"protein\"", 
+                    TagBox[
+                    TooltipBox[
+                    TemplateBox[{"\"String\"", 
+                    RowBox[{"Interpreter", "[", "\"String\"", "]"}]}, 
+                    "ClickToCopy2"], "\"parameter interpreter\"", 
+                    TooltipStyle -> "TextStyling"], 
+                    Annotation[#, "parameter interpreter", "Tooltip"]& ], 
+                    "\"\""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {{1, 1}, Axis}, 
+                    BaseStyle -> {
+                    ButtonBoxOptions -> {ImageSize -> Automatic}}], "Grid"], 
+                    "SummaryItem"]}]}}, 
+                 GridBoxAlignment -> {
+                  "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+                 False, GridBoxItemSize -> {
+                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                 GridBoxSpacings -> {
+                  "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                 BaseStyle -> {
+                  ShowStringCharacters -> False, NumberMarks -> False, 
+                   PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+              GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+              AutoDelete -> False, 
+              GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+              BaselinePosition -> {1, 1}]}, 
+           Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+         "SummaryPanel"],
+        DynamicModuleValues:>{}], "]"}],
+      LLMTool[<|
+       "Name" -> "synthyra_protein_properties", "Description" -> 
+        "Predicted properties of a protein from Synthyra's Oracle probes: \
+solubility, thermostability, E. coli expression, subcellular location, pH \
+optimum, kcat, homodimerization, taxon, and enzyme and GO classes.", 
+        "Parameters" -> {
+         "protein" -> <|
+           "Interpreter" -> "String", "Help" -> Missing["NotSpecified"], 
+            "Required" -> True|>}, 
+        "Function" -> (Synthyra`SynthyraLink`Private`llmProperties[
+          Synthyra`SynthyraLink`SynthyraProteinProperties[
+           #["protein"]]]& ), "Options" -> {}, "LLMPacletVersion" -> 
+        "2.3.2"|>],
+      Editable->False,
+      SelectWithContents->True,
+      Selectable->False]},
+    {
+     InterpretationBox[
+      RowBox[{
+       TagBox["LLMTool",
+        "SummaryHead"], "[", 
+       DynamicModuleBox[{Typeset`open$$ = False, Typeset`embedState$$ = 
+        "Ready"}, 
+        TemplateBox[{
+          PaneSelectorBox[{False -> GridBox[{{
+                PaneBox[
+                 ButtonBox[
+                  DynamicBox[
+                   FEPrivate`FrontEndResource[
+                   "FEBitmaps", "SummaryBoxOpener"]], 
+                  ButtonFunction :> (Typeset`open$$ = True), Appearance -> 
+                  None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                  "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                 Dynamic[{
+                   Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                GridBox[{{
+                   RowBox[{
+                    TagBox["\"Name: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"synthyra_interaction_partners\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Description: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"The predicted interaction partners of a human protein \
+across the human proteome,\\nstrongest first with Atlas confidence in \
+percent. Takes a few minutes.\"", "SummaryItem"]}]}}, 
+                 GridBoxAlignment -> {
+                  "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+                 False, GridBoxItemSize -> {
+                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                 GridBoxSpacings -> {
+                  "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                 BaseStyle -> {
+                  ShowStringCharacters -> False, NumberMarks -> False, 
+                   PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+              GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+              AutoDelete -> False, 
+              GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+              BaselinePosition -> {1, 1}], True -> GridBox[{{
+                PaneBox[
+                 ButtonBox[
+                  DynamicBox[
+                   FEPrivate`FrontEndResource[
+                   "FEBitmaps", "SummaryBoxCloser"]], 
+                  ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                  None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                  "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                 Dynamic[{
+                   Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                GridBox[{{
+                   RowBox[{
+                    TagBox["\"Name: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"synthyra_interaction_partners\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Description: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"The predicted interaction partners of a human protein \
+across the human proteome,\\nstrongest first with Atlas confidence in \
+percent. Takes a few minutes.\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Function: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{
+                    RowBox[{"Synthyra`SynthyraLink`Private`llmPartners", "[", 
+                    RowBox[{
+                    RowBox[{"SynthyraInteractome", "[", 
+                    RowBox[{"#1", "[", "\"protein\"", "]"}], "]"}], ",", 
+                    RowBox[{"#1", "[", "\"protein\"", "]"}]}], "]"}], "&"}], 
+                    "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Parameters: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    TagBox[
+                    GridBox[{{"\"protein\"", 
+                    TagBox[
+                    TooltipBox[
+                    TemplateBox[{"\"String\"", 
+                    RowBox[{"Interpreter", "[", "\"String\"", "]"}]}, 
+                    "ClickToCopy2"], "\"parameter interpreter\"", 
+                    TooltipStyle -> "TextStyling"], 
+                    Annotation[#, "parameter interpreter", "Tooltip"]& ], 
+                    "\"\""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {{1, 1}, Axis}, 
+                    BaseStyle -> {
+                    ButtonBoxOptions -> {ImageSize -> Automatic}}], "Grid"], 
+                    "SummaryItem"]}]}}, 
+                 GridBoxAlignment -> {
+                  "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+                 False, GridBoxItemSize -> {
+                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                 GridBoxSpacings -> {
+                  "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                 BaseStyle -> {
+                  ShowStringCharacters -> False, NumberMarks -> False, 
+                   PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+              GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+              AutoDelete -> False, 
+              GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+              BaselinePosition -> {1, 1}]}, 
+           Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+         "SummaryPanel"],
+        DynamicModuleValues:>{}], "]"}],
+      LLMTool[<|
+       "Name" -> "synthyra_interaction_partners", "Description" -> 
+        "The predicted interaction partners of a human protein across the \
+human proteome, strongest first with Atlas confidence in percent. Takes a few \
+minutes.", 
+        "Parameters" -> {
+         "protein" -> <|
+           "Interpreter" -> "String", "Help" -> Missing["NotSpecified"], 
+            "Required" -> True|>}, 
+        "Function" -> (Synthyra`SynthyraLink`Private`llmPartners[
+          Synthyra`SynthyraLink`SynthyraInteractome[
+           #["protein"]], 
+          #["protein"]]& ), "Options" -> {}, "LLMPacletVersion" -> "2.3.2"|>],
+      Editable->False,
+      SelectWithContents->True,
+      Selectable->False]},
+    {
+     InterpretationBox[
+      RowBox[{
+       TagBox["LLMTool",
+        "SummaryHead"], "[", 
+       DynamicModuleBox[{Typeset`open$$ = False, Typeset`embedState$$ = 
+        "Ready"}, 
+        TemplateBox[{
+          PaneSelectorBox[{False -> GridBox[{{
+                PaneBox[
+                 ButtonBox[
+                  DynamicBox[
+                   FEPrivate`FrontEndResource[
+                   "FEBitmaps", "SummaryBoxOpener"]], 
+                  ButtonFunction :> (Typeset`open$$ = True), Appearance -> 
+                  None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                  "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                 Dynamic[{
+                   Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                GridBox[{{
+                   RowBox[{
+                    TagBox["\"Name: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["\"synthyra_fold_protein\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Description: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"Predict a protein's 3D structure with ESMFold2 and \
+report its confidence (mean\\npLDDT from 0 to 100, and pTM from 0 to 1).\"", 
+                    "SummaryItem"]}]}}, 
+                 GridBoxAlignment -> {
+                  "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+                 False, GridBoxItemSize -> {
+                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                 GridBoxSpacings -> {
+                  "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                 BaseStyle -> {
+                  ShowStringCharacters -> False, NumberMarks -> False, 
+                   PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+              GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+              AutoDelete -> False, 
+              GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+              BaselinePosition -> {1, 1}], True -> GridBox[{{
+                PaneBox[
+                 ButtonBox[
+                  DynamicBox[
+                   FEPrivate`FrontEndResource[
+                   "FEBitmaps", "SummaryBoxCloser"]], 
+                  ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                  None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                  "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                 Dynamic[{
+                   Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                GridBox[{{
+                   RowBox[{
+                    TagBox["\"Name: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["\"synthyra_fold_protein\"", "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Description: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"Predict a protein's 3D structure with ESMFold2 and \
+report its confidence (mean\\npLDDT from 0 to 100, and pTM from 0 to 1).\"", 
+                    "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Function: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{
+                    RowBox[{"Synthyra`SynthyraLink`Private`llmFold", "[", 
+                    RowBox[{"SynthyraFoldProtein", "[", 
+                    RowBox[{
+                    RowBox[{"#1", "[", "\"protein\"", "]"}], ",", 
+                    RowBox[{"\"Output\"", "\[Rule]", "\"Association\""}]}], 
+                    "]"}], "]"}], "&"}], "SummaryItem"]}]}, {
+                   RowBox[{
+                    TagBox["\"Parameters: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    TagBox[
+                    GridBox[{{"\"protein\"", 
+                    TagBox[
+                    TooltipBox[
+                    TemplateBox[{"\"String\"", 
+                    RowBox[{"Interpreter", "[", "\"String\"", "]"}]}, 
+                    "ClickToCopy2"], "\"parameter interpreter\"", 
+                    TooltipStyle -> "TextStyling"], 
+                    Annotation[#, "parameter interpreter", "Tooltip"]& ], 
+                    "\"\""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {{1, 1}, Axis}, 
+                    BaseStyle -> {
+                    ButtonBoxOptions -> {ImageSize -> Automatic}}], "Grid"], 
+                    "SummaryItem"]}]}}, 
+                 GridBoxAlignment -> {
+                  "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+                 False, GridBoxItemSize -> {
+                  "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                 GridBoxSpacings -> {
+                  "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                 BaseStyle -> {
+                  ShowStringCharacters -> False, NumberMarks -> False, 
+                   PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+              GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+              AutoDelete -> False, 
+              GridBoxItemSize -> {
+               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+              BaselinePosition -> {1, 1}]}, 
+           Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+         "SummaryPanel"],
+        DynamicModuleValues:>{}], "]"}],
+      LLMTool[<|
+       "Name" -> "synthyra_fold_protein", "Description" -> 
+        "Predict a protein's 3D structure with ESMFold2 and report its \
+confidence (mean pLDDT from 0 to 100, and pTM from 0 to 1).", 
+        "Parameters" -> {
+         "protein" -> <|
+           "Interpreter" -> "String", "Help" -> Missing["NotSpecified"], 
+            "Required" -> True|>}, 
+        "Function" -> (Synthyra`SynthyraLink`Private`llmFold[
+          Synthyra`SynthyraLink`SynthyraFoldProtein[
+           #["protein"], "Output" -> "Association"]]& ), "Options" -> {}, 
+        "LLMPacletVersion" -> "2.3.2"|>],
+      Editable->False,
+      SelectWithContents->True,
+      Selectable->False]}
+   },
+   DefaultBaseStyle->"Column",
+   GridBoxAlignment->{"Columns" -> {{Left}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Column"]], "Output",
+ CellLabel->"Out[1]=",
+ CellID->218378516,ExpressionUUID->"acbcee0f-6849-d84d-a96d-2d5814857061"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"LLMSynthesize", "[", 
+  RowBox[{"\"\<Does TP53 bind MDM2, and which drugs block it?\>\"", ",", 
+   RowBox[{"LLMEvaluator", "->", 
+    RowBox[{"<|", 
+     RowBox[{"\"\<Tools\>\"", "->", 
+      RowBox[{"SynthyraLLMTools", "[", "]"}]}], "|>"}]}]}], "]"}]], "Input",
+ CellID->83286420,ExpressionUUID->"41950444-1300-5b48-9941-1b8ead8bf84a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",
+ CellID->679356189,ExpressionUUID->"d7f0345e-da0e-4e47-94cb-eb8dea5e9a7a"],
+
+Cell[TextData[ButtonBox["SynthyraLink",
+ BaseStyle->"Link",
+ ButtonData->"paclet:Synthyra/SynthyraLink/guide/SynthyraLink"]], "MoreAbout",
+ CellID->1220330368,ExpressionUUID->"bab0e6ef-d7c4-c04a-bd1c-7757e453b379"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",ExpressionUUID->"bd05b2c0-f06c-bc41-b339-575ceb4522d0"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->316606331,ExpressionUUID->"6db013ce-574d-7c4e-9ec2-4e294f398ee7"],
+
+Cell["Synthyra/SynthyraLink", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->454136838,ExpressionUUID->"07074f77-1fe9-904d-a2d1-101ff80edb17"],
+
+Cell["Synthyra`SynthyraLink`", "Categorization",
+ CellLabel->"Context",
+ CellID->339832522,ExpressionUUID->"a8b35504-ebc3-324b-baaa-a9a9c0ca8118"],
+
+Cell["Synthyra/SynthyraLink/ref/SynthyraLLMTools", "Categorization",
+ CellLabel->"URI",
+ CellID->282616040,ExpressionUUID->"7079e45a-ad53-4d48-952d-0c432f195d5f"]
+}, Closed]]
+}, Open  ]]
+},
+Saveable->False,
+WindowSize->{581.25, 663.75},
+WindowMargins->{{423, Automatic}, {Automatic, 40.5}},
+WindowTitle->"SynthyraLLMTools",
+Visible->False,
+TaggingRules-><|"Paclet" -> "Synthyra/SynthyraLink"|>,
+FrontEndVersion->"15.0 for Microsoft Windows (64-bit) (May 19, 2026)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"d3b3a992-af2f-124c-bb5c-12acac380e19"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[606, 23, 114, 1, 70, "ObjectName",ExpressionUUID->"aafde532-f773-a94f-8882-d08d37267fd5",
+ CellID->1789269148],
+Cell[723, 26, 376, 6, 70, "Usage",ExpressionUUID->"079c1bf9-705c-f14d-9ba1-c0ffd34b080a"],
+Cell[1102, 34, 106, 1, 70, "NotesSection",ExpressionUUID->"b7dbedb6-a5d4-f141-88f8-832ad94b4e5b",
+ CellID->526220353],
+Cell[1211, 37, 217, 4, 70, "Notes",ExpressionUUID->"55cccab3-c012-6146-bc82-24d1bfade5b6",
+ CellID->176100681]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1465, 46, 97, 0, 70, "PrimaryExamplesSection",ExpressionUUID->"85d7a6a4-fbbf-104e-8775-da6908927958"],
+Cell[1565, 48, 163, 2, 70, "Input",ExpressionUUID->"149b9220-df42-a040-805c-05d60403cf1a",
+ CellID->1543145072],
+Cell[CellGroupData[{
+Cell[1753, 54, 191, 4, 70, "Input",ExpressionUUID->"8b9245b1-bced-7c44-855e-c85390078d9b",
+ CellID->1454590456],
+Cell[1947, 60, 35372, 716, 70, "Output",ExpressionUUID->"acbcee0f-6849-d84d-a96d-2d5814857061",
+ CellID->218378516]
+}, Open  ]],
+Cell[37334, 779, 360, 7, 70, "Input",ExpressionUUID->"41950444-1300-5b48-9941-1b8ead8bf84a",
+ CellID->83286420]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37731, 791, 117, 1, 70, "MoreAboutSection",ExpressionUUID->"d7f0345e-da0e-4e47-94cb-eb8dea5e9a7a",
+ CellID->679356189],
+Cell[37851, 794, 214, 3, 70, "MoreAbout",ExpressionUUID->"bab0e6ef-d7c4-c04a-bd1c-7757e453b379",
+ CellID->1220330368],
+Cell[CellGroupData[{
+Cell[38090, 801, 102, 0, 70, "CategorizationSection",ExpressionUUID->"bd05b2c0-f06c-bc41-b339-575ceb4522d0"],
+Cell[38195, 803, 134, 2, 70, "Categorization",ExpressionUUID->"6db013ce-574d-7c4e-9ec2-4e294f398ee7",
+ CellID->316606331],
+Cell[38332, 807, 149, 2, 70, "Categorization",ExpressionUUID->"07074f77-1fe9-904d-a2d1-101ff80edb17",
+ CellID->454136838],
+Cell[38484, 811, 146, 2, 70, "Categorization",ExpressionUUID->"a8b35504-ebc3-324b-baaa-a9a9c0ca8118",
+ CellID->339832522],
+Cell[38633, 815, 162, 2, 70, "Categorization",ExpressionUUID->"7079e45a-ad53-4d48-952d-0c432f195d5f",
+ CellID->282616040]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

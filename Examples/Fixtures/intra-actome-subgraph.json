@@ -1,0 +1,58 @@
+{
+  "nodes": [
+    {"id": "QUERY_A", "name": "Fixture seed A", "node_type": "protein", "uid": "QUERY_A"},
+    {"id": "QUERY_B", "name": "Fixture seed B", "node_type": "protein", "uid": "QUERY_B"},
+    {"id": "P_01", "name": "Fixture protein 01", "node_type": "protein", "uid": "P_01"},
+    {"id": "P_02", "name": "Fixture protein 02", "node_type": "protein", "uid": "P_02"},
+    {"id": "P_03", "name": "Fixture protein 03", "node_type": "protein", "uid": "P_03"},
+    {"id": "P_04", "name": "Fixture protein 04", "node_type": "protein", "uid": "P_04"},
+    {"id": "P_05", "name": "Fixture protein 05", "node_type": "protein", "uid": "P_05"},
+    {"id": "P_06", "name": "Fixture protein 06", "node_type": "protein", "uid": "P_06"},
+    {"id": "P_07", "name": "Fixture protein 07", "node_type": "protein", "uid": "P_07"},
+    {"id": "P_08", "name": "Fixture protein 08", "node_type": "protein", "uid": "P_08"},
+    {"id": "P_09", "name": "Fixture protein 09", "node_type": "protein", "uid": "P_09"},
+    {"id": "P_10", "name": "Fixture protein 10", "node_type": "protein", "uid": "P_10"},
+    {"id": "P_11", "name": "Fixture protein 11", "node_type": "protein", "uid": "P_11"}
+  ],
+  "edges": [
+    {"i": 0, "j": 2, "s": 96, "st": true, "bg": false, "bgmv": false},
+    {"i": 0, "j": 3, "s": 92, "st": false, "bg": true, "bgmv": false},
+    {"i": 0, "j": 4, "s": 85, "st": false, "bg": false, "bgmv": false},
+    {"i": 1, "j": 3, "s": 89, "st": true, "bg": false, "bgmv": false},
+    {"i": 1, "j": 5, "s": 83, "st": false, "bg": false, "bgmv": false},
+    {"i": 2, "j": 6, "s": 81, "st": false, "bg": false, "bgmv": false},
+    {"i": 2, "j": 7, "s": 78, "st": false, "bg": false, "bgmv": false},
+    {"i": 3, "j": 7, "s": 88, "st": false, "bg": true, "bgmv": false},
+    {"i": 3, "j": 8, "s": 75, "st": false, "bg": false, "bgmv": false},
+    {"i": 4, "j": 9, "s": 73, "st": false, "bg": false, "bgmv": false},
+    {"i": 5, "j": 8, "s": 80, "st": false, "bg": false, "bgmv": false},
+    {"i": 5, "j": 10, "s": 71, "st": false, "bg": false, "bgmv": false},
+    {"i": 6, "j": 11, "s": 68, "st": false, "bg": false, "bgmv": false},
+    {"i": 7, "j": 9, "s": 77, "st": false, "bg": false, "bgmv": false},
+    {"i": 8, "j": 10, "s": 74, "st": false, "bg": false, "bgmv": false},
+    {"i": 9, "j": 11, "s": 66, "st": false, "bg": false, "bgmv": false},
+    {"i": 10, "j": 12, "s": 64, "st": false, "bg": false, "bgmv": false},
+    {"i": 11, "j": 12, "s": 62, "st": false, "bg": false, "bgmv": false}
+  ],
+  "query_ids": ["QUERY_A", "QUERY_B"],
+  "node_tiers": {
+    "QUERY_A": 0,
+    "QUERY_B": 0,
+    "P_01": 1,
+    "P_02": 1,
+    "P_03": 1,
+    "P_04": 1,
+    "P_05": 2,
+    "P_06": 2,
+    "P_07": 2,
+    "P_08": 2,
+    "P_09": 2,
+    "P_10": 3,
+    "P_11": 3
+  },
+  "metadata": {
+    "fixture_only": true,
+    "task_type": "ppi",
+    "description": "Synthetic compact result_actome_edges topology and confidence values for a credit-free rendering demo."
+  }
+}

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "synthyralink-codegen"
+version = "0.2.0"
+description = "Deterministic OpenAPI-to-Wolfram generator for SynthyraLink"
+requires-python = ">=3.12"
+license = {text = "Apache-2.0"}
+dependencies = ["Jinja2==3.1.6"]
+
+[project.optional-dependencies]
+test = ["pytest==8.4.2"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["Tools/tests"]
+markers = ["wolfram: runs the Wolfram Language suites through wolframscript, which needs a licensed Wolfram kernel"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["Tools/synthyra_codegen"]

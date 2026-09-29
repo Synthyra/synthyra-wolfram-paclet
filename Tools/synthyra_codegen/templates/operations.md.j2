@@ -1,0 +1,15 @@
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<!-- This table is generated. Do not edit by hand. -->
+
+# Generated operation reference
+
+Contract: **{{ contract_title }} {{ contract_version }}**  
+SHA-256: `{{ contract_digest }}`  
+Source commit: `{{ source_commit or "not declared" }}`  
+Public operations: **{{ public_operation_count }}**
+
+| Wolfram request | `operationId` | Method | Path | Result | Stability | Authentication | Summary |
+|---|---|---:|---|---|---|---|---|
+{% for row in rows -%}
+| `{{ row.request_name }}` | `{{ row.operation_id }}` | `{{ row.method }}` | `{{ row.path }}` | {{ row.result_kind }} | {{ row.stability }} | {{ row.authentication }} | {{ row.summary | replace('|', '\\|') | replace('\n', ' ') }} |
+{% endfor %}

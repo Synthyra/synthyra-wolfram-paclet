@@ -1,0 +1,340 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     12003,        330]
+NotebookOptionsPosition[      8523,        252]
+NotebookOutlinePosition[      9122,        273]
+CellTagsIndexPosition[      9079,        270]
+WindowTitle->SynthyraLink
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["SynthyraLink", "GuideTitle",
+ CellID->451890487,ExpressionUUID->"ccc1b0e1-f0b8-d646-baba-37a94a815aaa"],
+
+Cell["\<\
+SynthyraLink brings Synthyra's protein models into the Wolfram Language: \
+structures as BioMolecule objects, interaction networks as Graph objects, and \
+predictions as Dataset objects, from a gene symbol, a UniProt accession, or a \
+sequence.\
+\>", "GuideAbstract",
+ CellID->1187372976,ExpressionUUID->"fb5d23cf-d2e6-114b-8a39-10a9be417cbf"],
+
+Cell[CellGroupData[{
+
+Cell["Proteins and structures", "GuideFunctionsSubsection",
+ CellID->174103173,ExpressionUUID->"de77b6cb-ef42-a14c-9f8e-bbb8bad8dc5f"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraProteinSequence",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraProteinSequence"],
+ " \[LongDash] a protein from a gene symbol, UniProt accession, entity, or \
+sequence"
+}], "GuideText",
+ CellID->169826056,ExpressionUUID->"e266535b-ff2f-a846-9a8c-a53e28d6c4e4"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraFoldProtein",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraFoldProtein"],
+ ", ",
+ ButtonBox["SynthyraFoldComplex",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraFoldComplex"],
+ " \[LongDash] predicted structures as BioMolecule objects, with per-residue \
+confidence"
+}], "GuideText",
+ CellID->169822600,ExpressionUUID->"37a283ff-ca43-b44c-ac51-768ead8254ef"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraStructurePlot",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraStructurePlot"],
+ " \[LongDash] 3D structures colored by confidence or by any per-residue \
+values"
+}], "GuideText",
+ CellID->1775728063,ExpressionUUID->"19a2696c-88d4-1641-9e6f-5e7f1a0d2fad"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Interactions and properties", "GuideFunctionsSubsection",
+ CellID->278879824,ExpressionUUID->"db113539-20a5-4441-b9f3-962e5f7bbe63"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraProteinInteractionScore",
+  BaseStyle->"Link",
+  ButtonData->
+   "paclet:Synthyra/SynthyraLink/ref/SynthyraProteinInteractionScore"],
+ " \[LongDash] the probability that two proteins interact, for single pairs \
+or whole sets"
+}], "GuideText",
+ CellID->1412516262,ExpressionUUID->"2edc1332-91cf-2040-8be3-a3dd1d765140"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraLigandBindingScore",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraLigandBindingScore"],
+ " \[LongDash] the probability that a small molecule binds a protein"
+}], "GuideText",
+ CellID->1248342142,ExpressionUUID->"2123bb7e-2422-5a48-b427-e74b8598eb15"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraInteractome",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraInteractome"],
+ " \[LongDash] a protein's predicted partners across its proteome as a Graph, \
+with known interactions and enrichment"
+}], "GuideText",
+ CellID->169829896,ExpressionUUID->"4a24aa55-a9df-244d-aa05-cde98ceaab33"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraProteinProperties",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraProteinProperties"],
+ " \[LongDash] predicted solubility, stability, localization, function, and \
+more"
+}], "GuideText",
+ CellID->1579363281,ExpressionUUID->"ac6a457c-6af6-5043-ba51-58cafe731fd2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Language models", "GuideFunctionsSubsection",
+ CellID->169830280,ExpressionUUID->"2ec2f03c-e0d1-a048-9a94-99c2ef5c8dc5"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraLLMTools",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraLLMTools"],
+ " \[LongDash] the functions above as LLMTool objects"
+}], "GuideText",
+ CellID->933997692,ExpressionUUID->"6293ab38-792f-fe4e-835e-bf46436fef6c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Sessions", "GuideFunctionsSubsection",
+ CellID->169839880,ExpressionUUID->"431ab8ed-d23f-c54d-8f31-a1f3d672cd29"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraConnect",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraConnect"],
+ ", ",
+ ButtonBox["$SynthyraClient",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/$SynthyraClient"],
+ " \[LongDash] connect with an API key, which never enters an expression"
+}], "GuideText",
+ CellID->169841032,ExpressionUUID->"c3bddfdf-6ee3-944d-b3fe-e5ea0d489c2f"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraRecord",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraRecord"],
+ ", ",
+ ButtonBox["SynthyraUseRecording",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraUseRecording"],
+ " \[LongDash] record a session and replay it offline"
+}], "GuideText",
+ CellID->169841800,ExpressionUUID->"238be1b6-fdf9-e249-a3b0-af0986395076"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The Synthyra API", "GuideFunctionsSubsection",
+ CellID->156416457,ExpressionUUID->"cc9408cd-3116-0c48-bb97-c2735dd7c71d"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraExecute",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraExecute"],
+ ", ",
+ ButtonBox["SynthyraClientObject",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraClientObject"],
+ " \[LongDash] call any operation of the Synthyra API"
+}], "GuideText",
+ CellID->169842568,ExpressionUUID->"b83fdb53-a362-e94a-bee5-598a045db5d7"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraJobObject",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraJobObject"],
+ ", ",
+ ButtonBox["SynthyraJobStatus",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraJobStatus"],
+ ", ",
+ ButtonBox["SynthyraWait",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraWait"],
+ ", ",
+ ButtonBox["SynthyraJobResult",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraJobResult"],
+ ", ",
+ ButtonBox["SynthyraCancelJob",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraCancelJob"],
+ " \[LongDash] follow and collect asynchronous jobs"
+}], "GuideText",
+ CellID->44020806,ExpressionUUID->"7d62aa6a-f943-0649-8d41-c958eb55262e"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraGraph",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraGraph"],
+ ", ",
+ ButtonBox["SynthyraHypergraphData",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraHypergraphData"],
+ ", ",
+ ButtonBox["SynthyraScoreMatrix",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraScoreMatrix"],
+ " \[LongDash] convert networks and score matrices to Wolfram objects"
+}], "GuideText",
+ CellID->169846024,ExpressionUUID->"7eccdfda-4249-8e41-bd23-488e9e26c33f"],
+
+Cell[TextData[{
+ ButtonBox["SynthyraAnalysis",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraAnalysis"],
+ ", ",
+ ButtonBox["SynthyraAnalysisObject",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraAnalysisObject"],
+ ", ",
+ ButtonBox["SynthyraWorkbench",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraWorkbench"],
+ ", ",
+ ButtonBox["SynthyraOracleDataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraOracleDataset"],
+ ", ",
+ ButtonBox["SynthyraEnrichmentDataset",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Synthyra/SynthyraLink/ref/SynthyraEnrichmentDataset"],
+ " \[LongDash] explore a coordinated analysis result"
+}], "GuideText",
+ CellID->474381042,ExpressionUUID->"61a4504b-86aa-374a-b6af-a43b66336476"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "GuideTutorialsSection",
+ CellID->169851400,ExpressionUUID->"2f62b16c-919a-944b-827d-04f1e94c0f19"],
+
+Cell[TextData[ButtonBox["TP53 with Synthyra",
+ BaseStyle->"Link",
+ ButtonData->
+  "paclet:Synthyra/SynthyraLink/tutorial/TP53WithSynthyra"]], "GuideTutorial",
+ CellID->1825123366,ExpressionUUID->"c4be1c88-0ebb-e145-bd62-f9a73cf89e1a"]
+}, Open  ]]
+},
+Saveable->False,
+WindowSize->{581.25, 663.75},
+WindowMargins->{{423, Automatic}, {Automatic, 40.5}},
+WindowTitle->"SynthyraLink",
+Visible->False,
+TaggingRules-><|"Paclet" -> "Synthyra/SynthyraLink"|>,
+FrontEndVersion->"15.0 for Microsoft Windows (64-bit) (May 19, 2026)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"31f2718f-7a09-4d46-860f-7daf7dd1db88"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[602, 23, 109, 1, 70, "GuideTitle",ExpressionUUID->"ccc1b0e1-f0b8-d646-baba-37a94a815aaa",
+ CellID->451890487],
+Cell[714, 26, 353, 6, 70, "GuideAbstract",ExpressionUUID->"fb5d23cf-d2e6-114b-8a39-10a9be417cbf",
+ CellID->1187372976],
+Cell[CellGroupData[{
+Cell[1092, 36, 134, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"de77b6cb-ef42-a14c-9f8e-bbb8bad8dc5f",
+ CellID->174103173],
+Cell[1229, 39, 328, 7, 70, "GuideText",ExpressionUUID->"e266535b-ff2f-a846-9a8c-a53e28d6c4e4",
+ CellID->169826056],
+Cell[1560, 48, 457, 11, 70, "GuideText",ExpressionUUID->"37a283ff-ca43-b44c-ac51-768ead8254ef",
+ CellID->169822600],
+Cell[2020, 61, 321, 7, 70, "GuideText",ExpressionUUID->"19a2696c-88d4-1641-9e6f-5e7f1a0d2fad",
+ CellID->1775728063]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2378, 73, 138, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"db113539-20a5-4441-b9f3-962e5f7bbe63",
+ CellID->278879824],
+Cell[2519, 76, 355, 8, 70, "GuideText",ExpressionUUID->"2edc1332-91cf-2040-8be3-a3dd1d765140",
+ CellID->1412516262],
+Cell[2877, 86, 318, 6, 70, "GuideText",ExpressionUUID->"2123bb7e-2422-5a48-b427-e74b8598eb15",
+ CellID->1248342142],
+Cell[3198, 94, 353, 7, 70, "GuideText",ExpressionUUID->"4a24aa55-a9df-244d-aa05-cde98ceaab33",
+ CellID->169829896],
+Cell[3554, 103, 330, 7, 70, "GuideText",ExpressionUUID->"ac6a457c-6af6-5043-ba51-58cafe731fd2",
+ CellID->1579363281]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3921, 115, 126, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"2ec2f03c-e0d1-a048-9a94-99c2ef5c8dc5",
+ CellID->169830280],
+Cell[4050, 118, 282, 6, 70, "GuideText",ExpressionUUID->"6293ab38-792f-fe4e-835e-bf46436fef6c",
+ CellID->933997692]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4369, 129, 119, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"431ab8ed-d23f-c54d-8f31-a1f3d672cd29",
+ CellID->169839880],
+Cell[4491, 132, 424, 10, 70, "GuideText",ExpressionUUID->"c3bddfdf-6ee3-944d-b3fe-e5ea0d489c2f",
+ CellID->169841032],
+Cell[4918, 144, 413, 10, 70, "GuideText",ExpressionUUID->"238be1b6-fdf9-e249-a3b0-af0986395076",
+ CellID->169841800]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5368, 159, 127, 1, 70, "GuideFunctionsSubsection",ExpressionUUID->"cc9408cd-3116-0c48-bb97-c2735dd7c71d",
+ CellID->156416457],
+Cell[5498, 162, 415, 10, 70, "GuideText",ExpressionUUID->"b83fdb53-a362-e94a-bee5-598a045db5d7",
+ CellID->169842568],
+Cell[5916, 174, 787, 22, 70, "GuideText",ExpressionUUID->"7d62aa6a-f943-0649-8d41-c958eb55262e",
+ CellID->44020806],
+Cell[6706, 198, 564, 14, 70, "GuideText",ExpressionUUID->"7eccdfda-4249-8e41-bd23-488e9e26c33f",
+ CellID->169846024],
+Cell[7273, 214, 831, 22, 70, "GuideText",ExpressionUUID->"61a4504b-86aa-374a-b6af-a43b66336476",
+ CellID->474381042]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8153, 242, 117, 1, 70, "GuideTutorialsSection",ExpressionUUID->"2f62b16c-919a-944b-827d-04f1e94c0f19",
+ CellID->169851400],
+Cell[8273, 245, 234, 4, 70, "GuideTutorial",ExpressionUUID->"c4be1c88-0ebb-e145-bd62-f9a73cf89e1a",
+ CellID->1825123366]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

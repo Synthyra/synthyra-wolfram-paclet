@@ -1,0 +1,54 @@
+Notebook[{
+Cell["TP53 with Synthyra", "Title"],
+Cell["Structure, properties, interactions, and ligands of the tumor suppressor p53, from the Wolfram Language", "Subtitle"],
+Cell["Each function below calls Synthyra's production API with the key in SYNTHYRA_API_KEY or SystemCredential[\"Synthyra/APIKey\"]. To run without a network or a key, evaluate the offline cell in place of the connect cell: it answers every request from a recording of this notebook made against production on 2026-09-29.", "Text"],
+Cell["Needs[\"Synthyra`SynthyraLink`\"]", "Input", CellTags -> {"Setup"}],
+Cell["SynthyraConnect[]", "Input", CellTags -> {"Live"}],
+Cell["SynthyraUseRecording[\"TP53Demo\"]", "Input", CellTags -> {"Offline"}],
+
+Cell["The protein", "Section"],
+Cell["A gene symbol, UniProt accession, Entity[\"Protein\", ...], or sequence all name a protein. Gene symbols resolve to the reviewed human UniProt entry unless \"Organism\" says otherwise.", "Text"],
+Cell["tp53 = SynthyraProteinSequence[\"TP53\"]", "Input"],
+Cell["StringLength[tp53[\"SequenceString\"]]", "Input"],
+
+Cell["Structure", "Section"],
+Cell["ESMFold2 predicts the structure, and every residue carries its confidence, pLDDT, from 0 to 100. The DNA-binding core, residues 94 to 292, folds with high confidence; the transactivation domain and the C-terminal region are intrinsically disordered, as they are in the cell.", "Text"],
+Cell["fold = SynthyraFoldProtein[\"TP53\", \"Output\" -> \"Association\"];\nfold[[{\"Model\", \"MeanPLDDT\", \"PTM\"}]]", "Input"],
+Cell["SynthyraStructurePlot[fold]", "Input"],
+Cell["ListLinePlot[fold[\"ResiduePLDDT\"][\"A\"],\n  Filling -> Axis, PlotRange -> {0, 100}, AxesLabel -> {\"residue\", \"pLDDT\"},\n  Epilog -> {Opacity[0.12], Blue, Rectangle[{94, 0}, {292, 100}]}, ImageSize -> 600]", "Input"],
+
+Cell["Predicted properties", "Section"],
+Cell["Synthyra's Oracle probes read the sequence alone: solubility, stability, expression, localization, enzyme and GO classes, and more.", "Text"],
+Cell["SynthyraProteinProperties[\"TP53\"]", "Input"],
+
+Cell["Interactome", "Section"],
+Cell["Atlas scores TP53 against every protein in the human proteome and keeps its strongest partners. Vertices are gene symbols, each edge carries the Atlas confidence, and the enrichment of the neighborhood rides along as an annotation.", "Text"],
+Cell["net = SynthyraInteractome[\"TP53\"]", "Input"],
+Cell["Each edge also says whether BioGRID or STRING already records the interaction. These are the predicted partners that are known:", "Text"],
+Cell["Select[EdgeList[net, \"TP53\" \[UndirectedEdge] _], ! TrueQ[AnnotationValue[{net, #}, \"Novel\"]] &]", "Input"],
+Cell["Almost every pair among these proteins scores above the threshold, so the whole network is close to complete. Its structure shows once only the most confident edges remain.", "Text"],
+Cell["core = EdgeDelete[net, Select[EdgeList[net], AnnotationValue[{net, #}, \"Confidence\"] < 94 &]];
+CommunityGraphPlot[core, FindGraphCommunities[core], VertexLabels -> Automatic, ImageSize -> 700]", "Input"],
+Cell["TakeLargest[AssociationThread[VertexList[core], BetweennessCentrality[core]], 8]", "Input"],
+Cell["AnnotationValue[net, \"Enrichment\"][1 ;; 10]", "Input"],
+
+Cell["Strongest partners", "Section"],
+Cell["The interactome keeps the 50 strongest partners, so MDM2, the ubiquitin ligase that holds p53 in check, falls just outside it. Scoring pairs directly shows where it stands.", "Text"],
+Cell["partners = Keys @ TakeLargest[\n   AssociationMap[AnnotationValue[{net, First @ EdgeList[net, \"TP53\" \\[UndirectedEdge] #]}, \"Confidence\"] &, AdjacencyList[net, \"TP53\"]],\n   8]", "Input"],
+Cell["SynthyraProteinInteractionScore[\"TP53\",\n  Append[AssociationMap[AnnotationValue[{net, #}, \"UniProtID\"] &, partners], \"MDM2\" -> \"Q00987\"]]", "Input"],
+
+Cell["Small molecules", "Section"],
+Cell["Nutlin-3a and idasanutlin occupy the pocket on MDM2 where p53 binds; eprenetapopt (APR-246) reactivates mutant p53 by modifying its cysteines; aspirin is a control. A ligand is SMILES, a chemical name, a Molecule, or Entity[\"Chemical\", ...].", "Text"],
+Cell["SynthyraLigandBindingScore[{\"MDM2\", \"TP53\"}, {\"nutlin-3a\", \"idasanutlin\", \"eprenetapopt\", \"aspirin\"}]", "Input"],
+
+Cell["The MDM2 and p53 complex", "Section"],
+Cell["MDM2's N-terminal domain, residues 17 to 125, grips the amphipathic helix of p53's transactivation domain, residues 15 to 29 (crystal structure 1YCR). ESMFold2 folds the two chains together; ipTM measures its confidence in the interface.", "Text"],
+Cell["mdm2 = SynthyraProteinSequence[\"MDM2\"];\ncomplex = SynthyraFoldComplex[{\n    \"MDM2 N-terminal domain\" -> BioSequence[\"Peptide\", StringTake[mdm2[\"SequenceString\"], {17, 125}]],\n    \"p53 transactivation helix\" -> BioSequence[\"Peptide\", StringTake[tp53[\"SequenceString\"], {15, 29}]]},\n   \"Output\" -> \"Association\"];\ncomplex[[{\"MeanPLDDT\", \"PTM\", \"IPTM\"}]]", "Input"],
+Cell["SynthyraStructurePlot[complex, \"ColorBy\" -> \"Chain\"]", "Input"],
+
+Cell["Ask in plain language", "Section"],
+Cell["SynthyraLLMTools gives a language model the functions above. This cell needs an LLM service configured in Wolfram and is not part of the offline recording.", "Text"],
+Cell["LLMSynthesize[\"Which proteins does TP53 interact with most strongly, and how confident is its predicted structure?\",\n  LLMEvaluator -> <|\"Tools\" -> SynthyraLLMTools[]|>]", "Input", CellTags -> {"LLM"}]
+},
+StyleDefinitions -> "Default.nb"
+]

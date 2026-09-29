@@ -1,0 +1,140 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      4699,        130]
+NotebookOptionsPosition[      2682,         81]
+NotebookOutlinePosition[      3294,        102]
+CellTagsIndexPosition[      3251,         99]
+WindowTitle->SynthyraAnalysisObject
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["SynthyraAnalysisObject", "ObjectName",ExpressionUUID->"fa763caf-20b5-2b4c-986b-80d048266801"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  RowBox[{"SynthyraAnalysisObject", "[", "...", "]"}]], "InlineFormula",
+  ExpressionUUID->"ebea0e27-396c-6c46-a1cf-ea48d1c7600b"],
+ " is a local, credential-free representation of coordinated structure, \
+oracle, annotation, network, enrichment, matrix, and TMAP results."
+}], "Usage",
+ CellID->2142290257,ExpressionUUID->"7e243c32-097e-4742-a80b-0eb6b1e1f4ff"],
+
+Cell["Details", "NotesSection",
+ CellID->32,ExpressionUUID->"6879b9b0-fb27-dc4b-a7c9-7509d77766a7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Examples", "PrimaryExamplesSection",
+ CellID->930955893,ExpressionUUID->"d402da7c-cff8-304f-ad81-9e1288ef011d"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<Synthyra`SynthyraLink`\>\"", "]"}]], "Input",
+ CellID->24762307,ExpressionUUID->"e9de711e-6802-8247-ac2a-a132bc0bce5b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",
+ CellID->106442751,ExpressionUUID->"a5655c82-4647-ba48-a8c0-ee9b1b892371"],
+
+Cell[TextData[ButtonBox["SynthyraLink",
+ BaseStyle->"Link",
+ ButtonData->"paclet:Synthyra/SynthyraLink/guide/SynthyraLink"]], "MoreAbout",
+ CellID->1822471709,ExpressionUUID->"1b0009ff-eff7-144f-956b-8a3ca878a26c"],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->292638107,ExpressionUUID->"49eb4a82-fb29-2e4d-a6d7-127fd369d057"],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->190797827,ExpressionUUID->"b15b4dd8-3afe-2c4a-9b6e-719a90018dd5"],
+
+Cell["Synthyra/SynthyraLink", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->84246668,ExpressionUUID->"0b508ae9-743d-c54e-8641-5b0968ec5ef9"],
+
+Cell["Synthyra`SynthyraLink`", "Categorization",
+ CellLabel->"Context",
+ CellID->1952679511,ExpressionUUID->"55d817a1-dc88-c245-889f-ebaf14930f74"],
+
+Cell["Synthyra/SynthyraLink/ref/SynthyraAnalysisObject", "Categorization",
+ CellLabel->"URI",
+ CellID->798531805,ExpressionUUID->"375e6ec7-6dd8-ec42-93b0-00d1ad86363e"]
+}, Closed]]
+}, Open  ]]
+},
+Saveable->False,
+WindowSize->{581.25, 663.75},
+WindowMargins->{{423, Automatic}, {Automatic, 40.5}},
+WindowTitle->"SynthyraAnalysisObject",
+Visible->False,
+TaggingRules-><|"Paclet" -> "Synthyra/SynthyraLink"|>,
+FrontEndVersion->"15.0 for Microsoft Windows (64-bit) (May 19, 2026)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"e0559706-83d3-0343-a6cd-1e0cd6202efe"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[612, 23, 99, 0, 70, "ObjectName",ExpressionUUID->"fa763caf-20b5-2b4c-986b-80d048266801"],
+Cell[714, 25, 393, 7, 70, "Usage",ExpressionUUID->"7e243c32-097e-4742-a80b-0eb6b1e1f4ff",
+ CellID->2142290257],
+Cell[1110, 34, 99, 1, 70, "NotesSection",ExpressionUUID->"6879b9b0-fb27-dc4b-a7c9-7509d77766a7",
+ CellID->32]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1246, 40, 117, 1, 70, "PrimaryExamplesSection",ExpressionUUID->"d402da7c-cff8-304f-ad81-9e1288ef011d",
+ CellID->930955893],
+Cell[1366, 43, 161, 2, 70, "Input",ExpressionUUID->"e9de711e-6802-8247-ac2a-a132bc0bce5b",
+ CellID->24762307]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1564, 50, 117, 1, 70, "MoreAboutSection",ExpressionUUID->"a5655c82-4647-ba48-a8c0-ee9b1b892371",
+ CellID->106442751],
+Cell[1684, 53, 214, 3, 70, "MoreAbout",ExpressionUUID->"1b0009ff-eff7-144f-956b-8a3ca878a26c",
+ CellID->1822471709],
+Cell[CellGroupData[{
+Cell[1923, 60, 122, 1, 70, "CategorizationSection",ExpressionUUID->"49eb4a82-fb29-2e4d-a6d7-127fd369d057",
+ CellID->292638107],
+Cell[2048, 63, 134, 2, 70, "Categorization",ExpressionUUID->"b15b4dd8-3afe-2c4a-9b6e-719a90018dd5",
+ CellID->190797827],
+Cell[2185, 67, 148, 2, 70, "Categorization",ExpressionUUID->"0b508ae9-743d-c54e-8641-5b0968ec5ef9",
+ CellID->84246668],
+Cell[2336, 71, 147, 2, 70, "Categorization",ExpressionUUID->"55d817a1-dc88-c245-889f-ebaf14930f74",
+ CellID->1952679511],
+Cell[2486, 75, 168, 2, 70, "Categorization",ExpressionUUID->"375e6ec7-6dd8-ec42-93b0-00d1ad86363e",
+ CellID->798531805]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
