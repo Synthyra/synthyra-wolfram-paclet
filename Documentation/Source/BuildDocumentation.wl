@@ -296,6 +296,8 @@ tutorialNotebook[] := Module[{source, counter = 0},
         Flatten @ Replace[
             First[source],
             {
+                (* The tutorial ships with the paclet installed, so it needs no loader. *)
+                Cell[_String, "Input", ___, CellTags -> {"Source"}, ___] :> Nothing,
                 Cell[code_String, "Input", ___, CellTags -> tags_, ___] /; IntersectingQ[Flatten[{tags}], {"Live", "LLM"}] :>
                     Cell[BoxData[inputBoxes[code]], "Input"],
                 Cell[code_String, "Input", ___] :> Module[{value = ToExpression[code]},

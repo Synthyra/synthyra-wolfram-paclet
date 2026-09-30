@@ -2,6 +2,8 @@ Notebook[{
 Cell["TP53 with Synthyra", "Title"],
 Cell["Structure, properties, interactions, and ligands of the tumor suppressor p53, from the Wolfram Language", "Subtitle"],
 Cell["Each function below calls Synthyra's production API with the key in SYNTHYRA_API_KEY or SystemCredential[\"Synthyra/APIKey\"]. To run without a network or a key, evaluate the offline cell in place of the connect cell: it answers every request from a recording of this notebook made against production on 2026-09-29.", "Text"],
+Cell["(* Only when the paclet is not installed: load it from the folder this notebook ships in. *)
+If[PacletFind[\"Synthyra/SynthyraLink\"] === {}, PacletDirectoryLoad[ParentDirectory[NotebookDirectory[]]]];", "Input", CellTags -> {"Source"}],
 Cell["Needs[\"Synthyra`SynthyraLink`\"]", "Input", CellTags -> {"Setup"}],
 Cell["SynthyraConnect[]", "Input", CellTags -> {"Live"}],
 Cell["SynthyraUseRecording[\"TP53Demo\"]", "Input", CellTags -> {"Offline"}],

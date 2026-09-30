@@ -232,7 +232,7 @@ VerificationTest[
             Function[code, With[{value = ToExpression[code]}, If[FailureQ[value], failure = {code, value}]]],
             Synthyra`SynthyraLink`Private`notebookInputs[
                 FileNameJoin[{DirectoryName[DirectoryName[DirectoryName[$TestFileName]]], "Examples", "TP53.nb"}],
-                {"Setup", "Live", "Offline", "LLM"}
+                {"Source", "Setup", "Live", "Offline", "LLM"}
             ]
         ];
         failure

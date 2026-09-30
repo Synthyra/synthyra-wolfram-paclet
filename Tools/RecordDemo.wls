@@ -8,7 +8,7 @@ Needs["Synthyra`SynthyraLink`"];
 
 inputs = Synthyra`SynthyraLink`Private`notebookInputs[
     FileNameJoin[{packageRoot, "Examples", "TP53.nb"}],
-    {"Setup", "Offline", "LLM"}
+    {"Source", "Setup", "Offline", "LLM"}
 ];
 target = FileNameJoin[{packageRoot, "Examples", "Data", "TP53Demo.wxf"}];
 
