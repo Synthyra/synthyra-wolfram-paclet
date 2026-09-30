@@ -27,6 +27,9 @@ resolveClient[other_] := proteinFailure[
 
 firstFailure[values_List] := SelectFirst[values, FailureQ, None];
 
+(* A bad input as a failure message shows it: its InputForm, cut to 60 characters. *)
+shortForm[value_] := StringTake[ToString[value, InputForm], UpTo[60]];
+
 (* ---------------------------------------------------------------------------------------------
    Organisms: the UniProt taxon a gene symbol is looked up in, and the name the interactome
    service knows the reference proteome by. *)
@@ -183,14 +186,14 @@ resolveProtein[text_String, organism_] := Module[{compact = StringDelete[text, W
             proteinFailure[
                 "UnrecognizedProtein",
                 "`Input` is not an amino-acid sequence, UniProt accession, or gene symbol.",
-                <|"Input" -> Short[text]|>
+                <|"Input" -> shortForm[text]|>
             ]
     ]
 ];
 resolveProtein[other_, _] := proteinFailure[
     "UnrecognizedProtein",
     "Cannot use `Input` as a protein; give a sequence, BioSequence, UniProt accession, gene symbol, or Entity[\"Protein\", ...].",
-    <|"Input" -> Short[other]|>
+    <|"Input" -> shortForm[other]|>
 ];
 
 manyQ[input_] := ListQ[input] || AssociationQ[input];
@@ -271,7 +274,7 @@ resolveLigand[text_String] := Module[{trimmed = StringTrim[text], molecule, smil
 resolveLigand[other_] := proteinFailure[
     "UnrecognizedLigand",
     "Cannot use `Input` as a ligand; give SMILES, a chemical name, a Molecule, or Entity[\"Chemical\", ...].",
-    <|"Input" -> Short[other]|>
+    <|"Input" -> shortForm[other]|>
 ];
 
 resolveLigands[input_] := Module[{records = resolveLigand /@ inputList[input], failure},
@@ -557,7 +560,7 @@ structureColoring[_, values_Association] := Module[{rules, legend},
 structureColoring[_, other_] := proteinFailure[
     "InvalidOption",
     "\"ColorBy\" must be \"Confidence\", \"Chain\", None, a list of per-residue values, or an Association of them by chain, not `Value`.",
-    <|"Value" -> Short[other]|>
+    <|"Value" -> shortForm[other]|>
 ];
 
 (* The options are the Workbench's, which defines SynthyraStructurePlot for analysis objects. *)
@@ -774,6 +777,49 @@ llmFold[result_Association] := StringTemplate["Predicted the structure of `Name`
     "PTM" -> Round[result["PTM"], 0.01]
 |>];
 llmFold[other_] := llmText[other];
+
+(* ---------------------------------------------------------------------------------------------
+   A returned Failure also prints its reason as a message: inside Part, a plot, or a table a
+   Failure is easy to miss, and every later cell then fails for a reason the notebook never
+   showed. Only the outermost call reports, so a failure one function passes to another prints
+   once. *)
+
+$insideSynthyraCall = False;
+
+reportFailure[function_Symbol, False, failure_?FailureQ] := (
+    Message[MessageName[function, "failed"], failure["Message"]];
+    failure
+);
+reportFailure[_Symbol, _, value_] := value;
+
+(* The body runs as its own call, so a Return inside it ends there and its value is still reported. *)
+SetAttributes[evaluateInside, HoldAll];
+evaluateInside[body_] := Block[{$insideSynthyraCall = True}, body];
+
+Scan[
+    Function[function,
+        MessageName[function, "failed"] = "`1`";
+        DownValues[function] = Replace[
+            DownValues[function],
+            {
+                (* A body ending in /; keeps its test outside the report. *)
+                (lhs_ :> Verbatim[Condition][body_, test_]) :>
+                    (lhs :> Condition[reportFailure[function, $insideSynthyraCall, evaluateInside[body]], test]),
+                (lhs_ :> body_) :>
+                    (lhs :> reportFailure[function, $insideSynthyraCall, evaluateInside[body]])
+            },
+            {1}
+        ]
+    ],
+    {
+        SynthyraProteinSequence, SynthyraFoldProtein, SynthyraFoldComplex, SynthyraStructurePlot,
+        SynthyraProteinInteractionScore, SynthyraLigandBindingScore, SynthyraProteinProperties,
+        SynthyraInteractome
+    }
+];
+
+(* A failure handed to the plot is an earlier call's, which reported it; pass it on unchanged. *)
+SynthyraStructurePlot[failure_?FailureQ, OptionsPattern[]] := failure;
 
 SynthyraLLMTools[] := {
     LLMTool[

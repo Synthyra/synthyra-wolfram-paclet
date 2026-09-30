@@ -9,6 +9,8 @@ All notable changes to SynthyraLink are documented here. Versions follow semanti
   `SynthyraLigandBindingScore`, `SynthyraProteinProperties`, `SynthyraInteractome`, and
   `SynthyraLLMTools`. Proteins may be gene symbols, UniProt accessions, entities, sequences, or
   `BioSequence` objects; ligands SMILES, names, `Molecule`, or entities.
+- A protein function that returns a `Failure` also prints its reason as a message, once per call,
+  so a failure inside `Part`, a plot, or a table still shows why.
 - `SynthyraConnect[]` connects to development until the ESMFold2-300 fold default reaches
   production; `SynthyraConnect["Production"]` names production.
 - `SynthyraRecord` and `SynthyraUseRecording` record a session and replay it offline, for a

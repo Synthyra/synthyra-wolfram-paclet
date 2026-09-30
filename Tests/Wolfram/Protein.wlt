@@ -85,6 +85,7 @@ VerificationTest[
         }
     ],
     {True, "UnrecognizedProtein", "UnknownOrganism", "NotAProtein"},
+    {SynthyraProteinSequence::failed, SynthyraProteinSequence::failed, SynthyraProteinSequence::failed, General::stop},
     TestID -> "Protein-InvalidInputsFailByName"
 ];
 
@@ -141,6 +142,7 @@ VerificationTest[
         ]
     ],
     True,
+    {SynthyraProteinInteractionScore::failed},
     TestID -> "Protein-ServerMessageReachesTheFailure"
 ];
 
@@ -176,6 +178,7 @@ VerificationTest[
 VerificationTest[
     FailureQ @ SynthyraStructurePlot[SynthyraFoldProtein["TP53"], "ColorBy" -> "Rainbow"],
     True,
+    {SynthyraStructurePlot::failed},
     TestID -> "Recording-StructurePlotRejectsUnknownColoring"
 ];
 
@@ -244,6 +247,7 @@ VerificationTest[
 VerificationTest[
     SynthyraProteinInteractionScore["TP53", "MKVLAAGIVALLLAA"][[1]],
     "NotRecorded",
+    {SynthyraProteinInteractionScore::failed},
     TestID -> "Recording-UnrecordedRequestFails"
 ];
 
