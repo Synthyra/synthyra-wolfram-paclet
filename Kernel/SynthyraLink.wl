@@ -1,7 +1,7 @@
 BeginPackage["Synthyra`SynthyraLink`"];
 
 SynthyraConnect::usage =
-    "SynthyraConnect[] creates a production Synthyra client. SynthyraConnect[\"Development\"] creates a development client.";
+    "SynthyraConnect[] creates a Synthyra client for the default environment, currently \"Development\". SynthyraConnect[\"Production\"] and SynthyraConnect[\"Development\"] name one.";
 
 SynthyraClientObject::usage =
     "SynthyraClientObject[...] is an opaque handle for a configured Synthyra API client.";

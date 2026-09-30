@@ -130,7 +130,11 @@ Options[SynthyraConnect] = {
     Authentication -> Automatic
 };
 
-SynthyraConnect[opts : OptionsPattern[]] := SynthyraConnect["Production", opts];
+(* Development serves the ESMFold2-300 fold default that production does not yet.
+   TODO(paclet_production_default): make "Production" the default again once Synthyra/synth#80 is promoted. *)
+$SynthyraDefaultEnvironment = "Development";
+
+SynthyraConnect[opts : OptionsPattern[]] := SynthyraConnect[$SynthyraDefaultEnvironment, opts];
 
 SynthyraConnect[environment_String, OptionsPattern[]] := Module[
     {normalizedEnvironment, credential, credentialHandle, url},

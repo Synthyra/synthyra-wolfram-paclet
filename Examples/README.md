@@ -5,9 +5,10 @@
 `TP53.nb` is the flagship demo: TP53's sequence, its ESMFold2 structure colored by confidence,
 its predicted properties, its interactome with the partners BioGRID and STRING already know, the
 strongest partners and MDM2 scored directly, MDM2 inhibitors against a control, and the folded
-MDM2 and p53 complex. Evaluate it live after `SynthyraConnect[]`, or offline after
+MDM2 and p53 complex. Its first cell loads the paclet from this folder's parent when none is
+installed. Its connect cell runs live with `offline = False`, or with `offline = True` calls
 `SynthyraUseRecording["TP53Demo"]`, which answers every request from `Data/TP53Demo.wxf`, a
-recording of this notebook against production. `Tools/RecordDemo.wls` rewrites the recording
+recording of this notebook against production that also answers a development client. `Tools/RecordDemo.wls` rewrites the recording
 after the notebook changes, and a test replays every cell of the notebook from it.
 
 ## Intra-actome graph demo

@@ -6,8 +6,9 @@ native objects: predicted structures as `BioMolecule`, interaction networks as `
 interaction, binding, and property predictions as numbers and `Dataset`. The functions are also
 available to language models as `LLMTool` objects.
 
-The paclet talks to Synthyra's public API (`https://api.synthyra.com`) over HTTPS with your API
-key. Its source is Apache-2.0; API access, billing, and returned data are governed by the
+The paclet talks to Synthyra's API over HTTPS with your API key. For now `SynthyraConnect[]`
+connects to development (`https://apidev.synthyra.com`), which serves the ESMFold2-300 fold default
+ahead of production; `SynthyraConnect["Production"]` connects to `https://api.synthyra.com`. Its source is Apache-2.0; API access, billing, and returned data are governed by the
 Synthyra API terms. It needs Wolfram Language 15.0 or later.
 
 ## Install
@@ -23,7 +24,7 @@ place of `PacletInstall`.
 ## A tour
 
 ```wl
-SynthyraConnect[]                                   (* uses SYNTHYRA_API_KEY or SystemCredential *)
+SynthyraConnect[]                                   (* development for now; uses SYNTHYRA_API_KEY or SystemCredential *)
 
 SynthyraProteinSequence["TP53"]                     (* BioSequence, from UniProt *)
 fold = SynthyraFoldProtein["TP53"]                  (* BioMolecule from ESMFold2, pLDDT in its B-factors *)
@@ -48,8 +49,9 @@ the interaction.
 ## The TP53 demo, with or without a network
 
 `Examples/TP53.nb` walks through structure, properties, the interactome, partners, drugs, and the
-MDM2 complex for p53. It ships with a recording of itself run against production, so it also runs
-offline and without a key:
+MDM2 complex for p53. Opened from a clone, its first cell loads the paclet from the clone. It ships
+with a recording of itself run against production, so it also runs offline and without a key: set
+`offline = True` in its connect cell, or evaluate
 
 ```wl
 SystemOpen @ PacletObject["Synthyra/SynthyraLink"]["AssetLocation", "TP53Notebook"]

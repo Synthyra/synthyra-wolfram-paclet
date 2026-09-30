@@ -1,12 +1,13 @@
 Notebook[{
 Cell["TP53 with Synthyra", "Title"],
 Cell["Structure, properties, interactions, and ligands of the tumor suppressor p53, from the Wolfram Language", "Subtitle"],
-Cell["Each function below calls Synthyra's production API with the key in SYNTHYRA_API_KEY or SystemCredential[\"Synthyra/APIKey\"]. To run without a network or a key, evaluate the offline cell in place of the connect cell: it answers every request from a recording of this notebook made against production on 2026-09-29.", "Text"],
+Cell["Each function below calls Synthyra's API (SynthyraConnect[] connects to development for now; SynthyraConnect[\"Production\"] names production) with the key in SYNTHYRA_API_KEY or SystemCredential[\"Synthyra/APIKey\"]. To run without a network or a key, set offline = True in the connect cell: every request is then answered from a recording of this notebook made against production on 2026-09-29.", "Text"],
 Cell["(* Only when the paclet is not installed: load it from the folder this notebook ships in. *)
-If[PacletFind[\"Synthyra/SynthyraLink\"] === {}, PacletDirectoryLoad[ParentDirectory[NotebookDirectory[]]]];", "Input", CellTags -> {"Source"}],
+If[PacletFind[\"Synthyra/SynthyraLink\"] === {}, PacletDirectoryLoad[ParentDirectory[NotebookDirectory[]]]];
+First[PacletFind[\"Synthyra/SynthyraLink\"], \"SynthyraLink was not found beside this notebook\"]", "Input", CellTags -> {"Source"}],
 Cell["Needs[\"Synthyra`SynthyraLink`\"]", "Input", CellTags -> {"Setup"}],
-Cell["SynthyraConnect[]", "Input", CellTags -> {"Live"}],
-Cell["SynthyraUseRecording[\"TP53Demo\"]", "Input", CellTags -> {"Offline"}],
+Cell["offline = False; (* True answers every call from the recording, with no network or key *)
+If[offline, SynthyraUseRecording[\"TP53Demo\"], SynthyraConnect[]]", "Input", CellTags -> {"Live"}],
 
 Cell["The protein", "Section"],
 Cell["A gene symbol, UniProt accession, Entity[\"Protein\", ...], or sequence all name a protein. Gene symbols resolve to the reviewed human UniProt entry unless \"Organism\" says otherwise.", "Text"],

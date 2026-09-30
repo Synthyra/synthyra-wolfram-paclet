@@ -9,7 +9,10 @@ All notable changes to SynthyraLink are documented here. Versions follow semanti
   `SynthyraLigandBindingScore`, `SynthyraProteinProperties`, `SynthyraInteractome`, and
   `SynthyraLLMTools`. Proteins may be gene symbols, UniProt accessions, entities, sequences, or
   `BioSequence` objects; ligands SMILES, names, `Molecule`, or entities.
-- `SynthyraRecord` and `SynthyraUseRecording` record a session and replay it offline; the TP53 demo
+- `SynthyraConnect[]` connects to development until the ESMFold2-300 fold default reaches
+  production; `SynthyraConnect["Production"]` names production.
+- `SynthyraRecord` and `SynthyraUseRecording` record a session and replay it offline, for a
+  client of either environment; the TP53 demo
   notebook ships with its recording.
 - `SynthyraConnect` sets `$SynthyraClient`, the default client of every function.
 - Reference pages for every public symbol with evaluated examples, a guide, and the TP53 tutorial.

@@ -12,12 +12,15 @@ requestBodyText[body_ByteArray] := ByteArrayToString[body];
 requestBodyText[body_String] := body;
 requestBodyText[_] := "";
 
+(* A request is keyed by its production URL, so a recording answers a client of either environment. *)
+canonicalURL[url_String] := StringReplace[url, StartOfString ~~ $SynthyraDevelopmentURL -> $SynthyraProductionURL];
+
 requestKey[request_HTTPRequest] := {
     ToUpperCase @ ToString @ request["Method"],
-    ToString @ request["URL"],
+    canonicalURL @ ToString @ request["URL"],
     requestBodyText @ request["Body"]
 };
-requestKey[url_String] := {"GET", url, ""};
+requestKey[url_String] := {"GET", canonicalURL[url], ""};
 requestKey[other_] := {"GET", ToString[other], ""};
 
 (* The body is kept once, as bytes; the replay transport restores its text. *)

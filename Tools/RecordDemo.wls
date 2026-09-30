@@ -1,5 +1,5 @@
 #!/usr/bin/env wolframscript
-(* Record Examples/TP53.nb against production into Examples/Data/TP53Demo.wxf, the recording
+(* Record Examples/TP53.nb against the default environment into Examples/Data/TP53Demo.wxf, the recording
    SynthyraUseRecording["TP53Demo"] replays. Needs SYNTHYRA_API_KEY; bills the demo's calls. *)
 
 packageRoot = DirectoryName[DirectoryName[$InputFileName]];
